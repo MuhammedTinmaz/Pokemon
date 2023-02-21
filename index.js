@@ -7,16 +7,23 @@ class Pokemon {
         this.attack = [];
     }
     showStatus() {
-        return `
-        ${this.name}'s Status: 
-        KP: ${this.kp} 
-        MP: ${this.mp}
-        Attack: ${
-            this.attack.length > 0
-                ? this.attack[0].name
-                : "Ich kann noch nichts"
-        }`;
+        let allAttacks = [];
+        if (this.attack.length === 0) {
+            return this.attack.push(
+                `${this.name} Die..ses...Po..ke...mon...be...sitzt...noch...keine... fähig....keiten!!!`
+            );
+        }
+        for (let i = 0; i < this.attack.length; i++) {
+            if (this.attack.length !== 0) {
+                allAttacks.push(this.attack[i].name);
+            }
+        }
+        return `${this.name}'s Status:
+            HP: ${this.kp}
+            MP: ${this.mp}
+            Attack's: ${allAttacks.join(", ")}`;
     }
+
     learnAttackSkill(name) {
         this.attack.push(name);
     }
@@ -34,6 +41,8 @@ class AttackSkill {
     }
 }
 let feuerzahn = new AttackSkill("Feuerzahn", 20, 14);
+let rankenhieb = new AttackSkill("Rankenhieb", 10, 18);
+let rasierblatt = new AttackSkill("Rasierblatt", 20, 18);
 //das pokemon soll eine neue fähigkeit bekommen
 
 // ATTACKE = KLASSE(NAME, SCHADEN, MANA)
@@ -43,9 +52,9 @@ let feuerzahn = new AttackSkill("Feuerzahn", 20, 14);
  **/
 
 //------------------------------------------------------CONSOLE-LOG'S
-console.log(bisasam.showStatus());
-console.log(glumanda.showStatus());
-console.log("-----------------------------------------------------");
 glumanda.learnAttackSkill(feuerzahn);
-console.log(glumanda.showStatus());
+bisasam.learnAttackSkill(rankenhieb);
+// console.log(glumanda.showStatus());
 // console.log(glumanda.showStatus("feuerzahn"));
+bisasam.learnAttackSkill(rasierblatt);
+console.log(bisasam.showStatus());
