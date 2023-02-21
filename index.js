@@ -27,6 +27,12 @@ class Pokemon {
     learnAttackSkill(name) {
         this.attack.push(name);
     }
+    angriff(attackIndex, ziel) {
+        const attack = this.attack[attackIndex];
+        const schaden = attack.schaden;
+        ziel.kp -= schaden;
+        return `${this.name} benutzt ${attack.name}, er macht ${attack.kp} schaden an ${ziel.name}`;
+    }
 }
 
 let bisasam = new Pokemon("Bisasam", 70, 120);
@@ -58,3 +64,6 @@ bisasam.learnAttackSkill(rankenhieb);
 // console.log(glumanda.showStatus("feuerzahn"));
 bisasam.learnAttackSkill(rasierblatt);
 console.log(bisasam.showStatus());
+
+bisasam.angriff(1, glumanda);
+console.log(bisasam.angriff(0, glumanda));
