@@ -20,6 +20,7 @@ class Pokemon {
 
     learnAttackSkill(name) {
         this.attack.push(name);
+        sss;
     }
 }
 
