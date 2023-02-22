@@ -46,6 +46,7 @@ class AttackSkill {
         this.mp = mp;
     }
 }
+
 let feuerzahn = new AttackSkill("Feuerzahn", 20, 14);
 let rankenhieb = new AttackSkill("Rankenhieb", 10, 18);
 let rasierblatt = new AttackSkill("Rasierblatt", 20, 18);
