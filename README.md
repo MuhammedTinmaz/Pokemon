@@ -2,13 +2,19 @@
 
 1. ## Class: 'Pokemon' (Name, Health, Magic,(Skills(Array,Objects)))
 2. ## Class; 'AttackSkill' (neue Attacken mit Magieverbrauch) constructor function
+
 ### Attacken: (Name, Schaden, Magieverbrauch)
+
 ```js
 let lightning = new AttackSkill("lightning", 40'KP', 30'MP');
 ```
--------------------------------
-### Methode: 
+
+---
+
+### Methode:
+
 1. 'learnAttackSkill' -> (like:'lightning') -> join 'AttackSkill'
+
 ```js
 pikachu.learnAttackSkill(lightning);
 ```
@@ -16,12 +22,11 @@ pikachu.learnAttackSkill(lightning);
 2. 'showStatus' -> (Gesundheit und Magie)-> zeigt wieviel noch übrig von den werten <- ist .
 
 3. 'attack' -> (Index,Gegner) -> nimmt einem 'AttackSkill' und greift anderes Pokemon an. Möglichkeiten wenn Magie nicht ausreicht hinzufügen.an
-'attack'call on 'AttackSkill'
-
+   'attack'call on 'AttackSkill'
 
 Beispiel:
 
-- pikachu.attack(0,bisasam) = erster erlernter Angriff macht X Schaden auf bisasam und entzieht Pikachu X Magiepunkte.
+-   pikachu.attack(0,bisasam) = erster erlernter Angriff macht X Schaden auf bisasam und entzieht Pikachu X Magiepunkte.
 
 ```JS
 class Attackskill {
@@ -44,11 +49,13 @@ raupi
 pikachu erstellt -> 100HP, 100KP
 bisasam erstellt -> 100HP, 100KP
 
-pikachu.attack(0,bisasam) -> 
+pikachu.attack(0,bisasam) ->
 pikachu.showStatus(100HP, 70KP)
 bisasam.showStatus(70HP, 100KP)
 ```
-----------------------------------
+
+---
+
 ```JS
 //Jedes Pokemon sollte mit einer bestimmten Menge an Gesundheit und Magie starten. Hier beginnt Pikachu zum Beispiel mit 120 Lebenspunkten und 80 Magie
 let pikachu = new Pokemon("pikachu", 120'HP', 80'MP');
@@ -60,8 +67,11 @@ let poisonSeed = new AttackSkill ("poison seed", 20, 20);
 pikachu.learnAttackSkill(lightning);
 bulbasaur.learnAttackSkill(poisonSeed);
 ```
-------------------------------
+
+---
+
 GETTER UND SETTER
+
 ```JS
 class ClassWithGetSet {
   #msg = "hello world";
@@ -79,3 +89,7 @@ console.log(instance.msg); // "hello world"
 instance.msg = "cake";
 console.log(instance.msg); // "hello cake"
 ```
+
+let feuerzahn = new AttackSkill("Feuerzahn", 20, 14);
+let rankenhieb = new AttackSkill("Rankenhieb", 10, 18);
+let rasierblatt = new AttackSkill("Rasierblatt", 20, 18);
