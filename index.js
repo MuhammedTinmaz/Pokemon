@@ -67,4 +67,4 @@ bisasam.learnAttackSkill(rasierblatt);
 console.log(bisasam.showStatus());
 
 bisasam.angriff(1, glumanda);
-console.log(bisasam.angriff(0, glumanda));
+console.log(bisasam.angriff(1, glumanda));
