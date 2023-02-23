@@ -4,7 +4,8 @@ class Pokemon {
         this.name = name;
         this.kp = kp;
         this.mp = mp;
-        this.attack = [];
+        this.maxMP = mp;
+        this.attack = { light: [], medium: [], strong: [] };
     }
     showStatus() {
         let allAttacks = [];
@@ -23,79 +24,99 @@ class Pokemon {
             MP: ${this.mp}
             Attack's: ${allAttacks.join(", ")}`;
     }
-
     learnAttackSkill(name) {
-        this.attack.push(name);
+        // this.attack[name.cat].push(name);
+        this.attack[name.cat].push(name);
+        console.log(this.attack[name.cat]);
     }
-    angriff(attackIndex, ziel) {
-        let attack = this.attack[attackIndex];
+    angriff(category, attackIndex, ziel) {
+        let attack = this.attack[category][attackIndex];
         let schaden = attack.kp;
         ziel.kp -= schaden;
-        let currentVal = this.mp;
-        if (attackIndex === 0) {
-            let result = Math.floor(this.mp * 0.15);
-            currentVal = Math.floor(this.mp * 0.85);
-            ziel.mp += schaden / 2;
-            return `${this.name} setzt ${
-                attack.name
-            } ein, verliert dabei ${result} MP. ${ziel.name} verliert ${
-                attack.kp
-            } KP und 
-             bekommt ${attack.kp / 2} MP dazu.`;
-        }
-        if (attackIndex === 1) {
-            let result = Math.floor(this.mp * 0.4);
-            this.mp = Math.floor(this.mp * 0.6);
-            ziel.mp += attack.kp / 2;
-            return `${this.name} setzt ${
-                attack.name
-            } ein, verliert dabei ${result} MP. ${ziel.name} verliert ${
-                attack.kp
-            } KP und 
-             bekommt ${attack.kp / 2} MP dazu.`;
-        }
-        if (attackIndex === 2) {
-            let result = Math.floor(this.mp * 0.6);
-            this.mp = Math.floor(this.mp * 0.4);
-            ziel.mp += attack.kp / 2;
-            return `${this.name} setzt ${
-                attack.name
-            } ein, verliert dabei ${result} MP. ${ziel.name} verliert ${
-                attack.kp
-            } KP und 
-             bekommt ${attack.kp / 2} MP dazu.`;
-        }
         if (ziel.kp <= 0) {
             return `${ziel.name} ist Kampfunfähig. ${this.name} hat GEWONNEN.`;
         }
+        function manaVerbrauchCalc(aktObj, prozent) {
+            let mpVerbrauch = Math.floor(aktObj.maxMP * prozent);
+            aktObj.mp -= mpVerbrauch;
+            ziel.mp += schaden / 2;
+            console.log(aktObj.mp);
+            return `${aktObj.name} setzt ${
+                attack.name
+            } ein, verliert dabei ${mpVerbrauch} MP. ${ziel.name} verliert ${
+                attack.kp
+            } KP und 
+                 bekommt ${attack.kp / 2} MP dazu.`;
+        }
+        if (attackIndex === 0) {
+            return manaVerbrauchCalc(this, 0.15);
+        }
+
+        if (attackIndex === 1) {
+            return manaVerbrauchCalc(this, 0.4);
+        }
+        if (attackIndex === 2) {
+            return manaVerbrauchCalc(this, 0.6);
+        }
     }
 }
+function manaVerbrauchCalc(ziel, aktObj, attack, schaden, prozent) {
+    let mpVerbrauch = Math.floor(aktObj.maxMP * prozent);
+    aktObj.mp -= mpVerbrauch; // wenn es klappt Math.floor entfernen
+    ziel.mp += schaden / 2;
+    console.log(aktObj.mp);
+    return `${aktObj.name} setzt ${
+        attack.name
+    } ein, verliert dabei ${mpVerbrauch} MP. ${ziel.name} verliert ${
+        attack.kp
+    } KP und 
+         bekommt ${attack.kp / 2} MP dazu.`;
+}
+
 let bisasam = new Pokemon("Bisasam", 70, 120);
 let glumanda = new Pokemon("Glumanda", 60, 90);
 
 //------------------------------------------------------ SKILLS
 // number hinzufügen um die angriffe zu kategorisieren
 class AttackSkill {
-    constructor(name, kp) {
+    constructor(name, cat, kp) {
         this.name = name;
+        this.cat = cat;
         this.kp = kp;
     }
 }
 
-let feuerzahn = new AttackSkill("Feuerzahn", 20);
-let rankenhieb = new AttackSkill("Rankenhieb", 50);
-let rasierblatt = new AttackSkill("Rasierblatt", 20);
+function randomAttackIndex() {
+    return Math.floor(Math.random() * 4);
+}
+
+let feuerzahn = new AttackSkill("Feuerzahn", "light", 20);
+let rankenhieb = new AttackSkill("Rankenhieb", "light", 10);
+let giftpuder = new AttackSkill("Giftpuder", "light", 20);
+let schlafpuder = new AttackSkill("Schlafpuder", "light", 20);
+let rammen = new AttackSkill("Rammen", "light", 20);
+let rasierblatt = new AttackSkill("Rasierblatt", "medium", 20);
+let abc = new AttackSkill("ABC", "strong", 50);
 
 // Das pokemon soll eine neue fähigkeit bekommen
+// console.log(feuerzahn.cat.toString());
 glumanda.learnAttackSkill(feuerzahn); // index 0
+glumanda.learnAttackSkill(rammen); // index 0
+
+bisasam.learnAttackSkill(rammen); // index 0
 bisasam.learnAttackSkill(rankenhieb); // index 0
+bisasam.learnAttackSkill(giftpuder); // index 0
+bisasam.learnAttackSkill(schlafpuder); // index 0
 bisasam.learnAttackSkill(rasierblatt); // index 1
+bisasam.learnAttackSkill(abc); // index 2
 
 //------------------------------------------------------CONSOLE-LOG'S
 
-bisasam.angriff(0, glumanda);
 // bisasam.angriff(0, glumanda);
 // bisasam.angriff(0, glumanda);
+// bisasam.angriff(0, glumanda);
+// bisasam.angriff(0, glumanda);
+console.log(bisasam.angriff("light", 0, glumanda));
 // console.log(bisasam.angriff(0, glumanda));
 
 console.log(glumanda.showStatus());
