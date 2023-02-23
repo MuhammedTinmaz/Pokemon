@@ -24,15 +24,29 @@ class Pokemon {
             MP: ${this.mp}
             Attack's: ${allAttacks.join(", ")}`;
     }
+    randomAttackIndex(category) {
+        // const attacksInCategory = this.attack[category];
+        const randomIndex = Math.floor(
+            Math.random() * this.attack[category].length
+        );
+        return randomIndex;
+        // return Math.floor(Math.random() * 4);
+    }
     learnAttackSkill(name) {
         // this.attack[name.cat].push(name);
-        this.attack[name.cat].push(name);
-        console.log(this.attack[name.cat]);
+        this.attack[name.atkCat].push(name);
+        console.log(this.attack[name.atkCat]);
     }
-    angriff(category, attackIndex, ziel) {
-        let attack = this.attack[category][attackIndex];
+    angriff(category, ziel) {
+        // let attack = this.attack[category][attackIndex];
+        // let schaden = attack.kp;
+        // ziel.kp -= schaden;
+
+        let randomIndex = this.randomAttackIndex(category);
+        let attack = this.attack[category][randomIndex];
         let schaden = attack.kp;
         ziel.kp -= schaden;
+
         if (ziel.kp <= 0) {
             return `${ziel.name} ist Kampfunfähig. ${this.name} hat GEWONNEN.`;
         }
@@ -48,14 +62,14 @@ class Pokemon {
             } KP und 
                  bekommt ${attack.kp / 2} MP dazu.`;
         }
-        if (attackIndex === 0) {
+        if (category === "light") {
             return manaVerbrauchCalc(this, 0.15);
         }
 
-        if (attackIndex === 1) {
+        if (category === "medium") {
             return manaVerbrauchCalc(this, 0.4);
         }
-        if (attackIndex === 2) {
+        if (category === "strong") {
             return manaVerbrauchCalc(this, 0.6);
         }
     }
@@ -79,9 +93,9 @@ let glumanda = new Pokemon("Glumanda", 60, 90);
 //------------------------------------------------------ SKILLS
 // number hinzufügen um die angriffe zu kategorisieren
 class AttackSkill {
-    constructor(name, cat, kp) {
+    constructor(name, atkCat, kp) {
         this.name = name;
-        this.cat = cat;
+        this.atkCat = atkCat;
         this.kp = kp;
     }
 }
@@ -116,7 +130,7 @@ bisasam.learnAttackSkill(abc); // index 2
 // bisasam.angriff(0, glumanda);
 // bisasam.angriff(0, glumanda);
 // bisasam.angriff(0, glumanda);
-console.log(bisasam.angriff("light", 0, glumanda));
+console.log(bisasam.angriff("light", glumanda));
 // console.log(bisasam.angriff(0, glumanda));
 
 console.log(glumanda.showStatus());
