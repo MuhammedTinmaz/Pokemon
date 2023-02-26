@@ -1,52 +1,5 @@
-Klassen:
-
-```js
-class Pokemon {
-    constructor(name, kp, mp){
-        this.name = name;
-        this.kp = kp;
-        this.mp = mp
-    }
-}->CHECK
-
-class AttackSkill{
-    constructor(name,kp,mp){
-        this.name = name;
-        this.kp = kp;
-        this.mp = mp;
-    }
-}->CHECK
-```
-
-Methoden:
-
-```JS
-learnAttackSkill();
-showStatus(); -> CHECK
-attack();
-```
-
-Beispiel:
-
-```js
-let lightning = new AttackSkill("lightning", 40, 30);
-pikachu.learnAttackSkill(lightning);
-```
-
----
-
 # 1. Pokemon(Klasse)
 
-METHOD'S DETAILS
-
-```
-1. showStatus():
-- wir returnen in dieser methode direkt.
-- mit ${} und this. notation den Namen des Pokemons, die KP und die MP.
-Aktualisiert den Status nach einem Kampf bzw. mitten drin.
-```
-
----
 
 ## Standart Werte
 
@@ -62,6 +15,9 @@ Psycho/Geist: 85MP
 Stahl/Gestein: 80MP
 Drache/Fee: 130MP
 ```
+## Werte Kombinationen
+
+
 
 ---
 
