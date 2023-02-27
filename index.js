@@ -92,7 +92,7 @@ let giftpuder = new AttackSkill("Giftpuder", "light", 20);
 let schlafpuder = new AttackSkill("Schlafpuder", "light", 20);
 let rammen = new AttackSkill("Rammen", "light", 20);
 let rasierblatt = new AttackSkill("Rasierblatt", "medium", 20);
-let abc = new AttackSkill("ABC", "strong", 50);
+// let abc = new AttackSkill("ABC", "strong", 50);
 
 glumanda.learnAttackSkill(feuerzahn); // index 0
 glumanda.learnAttackSkill(rammen); // index 0
@@ -106,16 +106,29 @@ bisasam.learnAttackSkill(rasierblatt); // index 1
 //------------------------------------------------------CONSOLE-LOG'S
 
 console.log(glumanda.showStatus());
-console.log(bisasam.showStatus());
-console.log(bisasam.angriff("light", glumanda));
-console.log(bisasam.angriff("light", glumanda));
+// Glumanda's Status:
+// HP: 60
+// MP: 90
+// Attack's: Feuerzahn, Rammen
 
+console.log(bisasam.showStatus());
+// Bisasam's Status:
+// HP: 70
+// MP: 120
+// Attack's: Rammen, Rankenhieb, Giftpuder, Schlafpuder, Rasierblatt
+console.log("---------------------");
+
+console.log(bisasam.angriff("light", glumanda)); // bisasam greift mit einem leichten Angriff glumanda an
+console.log(bisasam.angriff("light", glumanda)); // bisasam greift mit einem leichten Angriff glumanda an
+console.log("---------------------");
+console.log(glumanda.showStatus()); // zwischenstatus von glumanda
+console.log(bisasam.showStatus()); // zwischenstatus von bisasam
+console.log(glumanda.angriff("light", bisasam)); // glumanda greift mit einem leichten Angriff bisasam an
+console.log("---------------------");
 console.log(glumanda.showStatus());
 console.log(bisasam.showStatus());
-console.log(glumanda.angriff("light", bisasam));
-
-console.log(glumanda.showStatus());
-console.log(bisasam.showStatus());
+console.log("---------------------");
 console.log(bisasam.angriff("light", glumanda));
 console.log(bisasam.angriff("light", glumanda));
+console.log("---------------------");
 console.log(glumanda.showStatus());

@@ -1,6 +1,5 @@
 # 1. Pokemon(Klasse)
-
-
+----------------------------------------------------------------
 ## Standart Werte
 
 ```
@@ -16,11 +15,7 @@ Stahl/Gestein: 80MP
 Drache/Fee: 130MP
 ```
 ## Werte Kombinationen
-
-
-
----
-
+---------------------------------------------------------------
 ```
 leichter Angriff : 15% ges.MP
 mittlerer Angriff : 40% ges.MP
@@ -30,9 +25,7 @@ schwerer Angriff : 60% ges.MP
 2 = mittlerer angriff
 3 = schwerer angriff
 ```
-
----
-
+--------------------------------------------------------------
 # 2. AttackSkill(Klasse)
 
 METHOD'S DETAILS
@@ -48,11 +41,11 @@ METHOD'S DETAILS
 ```
 
 string zusammen bauen mit
-let status= sting is leer und in jedenm schritt füg was hinzu erst name kp mp dann schleife dann attacke darin hinzufügen und am ende mit return string wieder geben .
+let status= string is leer und in jedem schritt füg was hinzu erst name kp mp dann schleife dann attacke darin hinzufügen und am ende mit return string wieder geben .
 
 return sting +=
-reutrn irgendwelche attacken details
+return irgendwelche attacken details
 schluss
-return reutn string
+return string
 
 wenn ihr in eurem return sting einem zeilem umbruch haen wollt dann macht ihr das mit '\n'

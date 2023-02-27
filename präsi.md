@@ -32,16 +32,17 @@ wir haben mehrere attacken für jede category(light, medium, strong) und die met
 
 ## Features:
 
--   Gewinnung von Mana(ziel).-> includes
 -   angriff Arten Kategorisiert -> includes
 -   zufällige Auswahl der Angriffe in den Kategorien -> includes
+-   Gewinnung von Mana(ziel).-> includes
 -   verlust von Mana(angreifer)-> includes
 
-Comining with new updates....
+Coming with new updates....
 Ideas:
 
--   Pokemon-Index
--   Weiterentwicklungen
+-   Pokemon-Index (PokeDex)
+-   Resistenzen (Typen)
+-   nur erlernen von Angriffen die möglich sind (Typenbasiert)
 -   Elementen Kombination (auch für MP)
--   Resistenzen
--   Heiltrank (Health Potion)
+-   ITEMS (HealthPotion, MP Potion, etc...)
+-   Evolution wenn x Kämpfe absolviert wurden (Weiterentwicklung)
